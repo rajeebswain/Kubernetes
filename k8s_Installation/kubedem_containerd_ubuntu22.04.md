@@ -2,6 +2,7 @@ Kubernetes v1.26 Cluster Setup with Kubeadm and Containerd on AWS Ubuntu 22.04
 !! Kubernetes Cluster Setup:
 
 1	To run containers in Pods, Kubernetes uses a container runtime.
+
 2	Kubernetes works with all container runtimes that implement a standard known as the container runtime interface (CRI). This is essentially a standard way to communicate between Kubernetes and the container runtime, and any runtime that supports this standard automatically works with Kubernetes. 
 3	Docker does not implement CRI, so Kubernetes implemented Docker shim, an additional layer to serve as an interface between Kubernetes and Docker. Now, however, there are plenty of runtimes available that implement the CRI, and it no longer makes sense for Kubernetes to maintain special support for Docker. 
 4	Mirantis and Docker have agreed to partner to maintain shim code standalone outside Kubernetes, as a conformant CRI interface for the Docker Engine API. They call it cri-dockered.
