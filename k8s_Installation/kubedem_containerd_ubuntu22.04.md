@@ -168,7 +168,9 @@ Here enable Network Forwarding. [Port-Forwarding](https://kubernetes.io/docs/set
 
       # Apply sysctl params without reboot
       sudo sysctl –system
-   
+      sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
+      modprobe br_netfilter
+      sysctl -p /etc/sysctl.conf
 6.	Install Kubectl, kubelet and kubeadm
 ```
 apt-get update && sudo apt-get install -y apt-transport-https curl
