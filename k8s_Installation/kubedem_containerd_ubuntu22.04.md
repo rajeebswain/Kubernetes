@@ -195,7 +195,7 @@ sudo kubeadm init
 e.g., sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 ```
 - The pod network CIDR you set during kubeadm init must match the CIDR range supported by the chosen CNI plugin. If the CIDR ranges are not compatible, the networking might not work as expected.
-9. To start using your cluster, you need to run the following as a regular user:
+9. To start using your cluster, you need to run the following as a regular user: (Only On Master)
 ```
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
