@@ -77,8 +77,8 @@ sudo sed -i -e '/swap/d' /etc/fstab
    Download the binaries of containerd
  	
 ```
-sudo wget https://github.com/containerd/containerd/releases/download/v1.7.3/containerd-1.7.3-linux-amd64.tar.gz 
-sudo tar Cxzvf /usr/local containerd-1.7.3-linux-amd64.tar.gz
+sudo wget https://github.com/containerd/containerd/releases/download/v1.6.16/containerd-1.6.16-linux-amd64.tar.gz 
+sudo tar Cxzvf /usr/local containerd-1.6.16-linux-amd64.tar.gz
 ```
    -	Install Control Groups:
 
