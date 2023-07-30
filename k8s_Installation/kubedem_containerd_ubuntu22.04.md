@@ -68,7 +68,7 @@ sudo su
 ```
 4.	Disable SWAP
 ```
-sudo swapoff –a
+sudo swapoff -a
 sudo sed -i -e '/swap/d' /etc/fstab
 ```
 5.	Install containerd:
