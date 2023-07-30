@@ -53,9 +53,9 @@ On Slave Node: Open the below ports in the security group
 
 2.	Now add the unique name for the nodes as master, slave1, and slave2. You can add any name. The purpose is only to add identification.
 ```
-hostnamectl set-hostname master
-hostnamectl set-hostname slave1
-hostnamectl set-hostname slave2
+sudo hostnamectl set-hostname master
+sudo hostnamectl set-hostname slave1
+sudo hostnamectl set-hostname slave2
 ```
 Or
 ```
@@ -77,29 +77,29 @@ sudo sed -i -e '/swap/d' /etc/fstab
    Download the binaries of containerd
  	
 ```
-wget https://github.com/containerd/containerd/releases/download/v1.7.3/containerd-1.7.3-linux-amd64.tar.gz 
-tar Cxzvf /usr/local containerd-1.7.3-linux-amd64.tar.gz
+sudo wget https://github.com/containerd/containerd/releases/download/v1.7.3/containerd-1.7.3-linux-amd64.tar.gz 
+sudo tar Cxzvf /usr/local containerd-1.7.3-linux-amd64.tar.gz
 ```
    -	Install Control Groups:
 
 In Kubernetes, a "system" generally refers to the collection of components and processes that work together to manage and maintain the overall health and operation of the Kubernetes cluster itself.
 ```
-wget https://raw.githubusercontent.com/containerd/containerd/main/containerd.service 
-mkdir -p /usr/local/lib/systemd/system/
-mv containerd.service  /usr/local/lib/systemd/system/containerd.service
-systemctl daemon-reload
-systemctl enable --now containerd
+sudo wget https://raw.githubusercontent.com/containerd/containerd/main/containerd.service 
+sudo mkdir -p /usr/local/lib/systemd/system/
+sudo mv containerd.service  /usr/local/lib/systemd/system/containerd.service
+sudo systemctl daemon-reload
+sudo systemctl enable --now containerd
 ```
    -	Install runc:
 ```
-wget https://github.com/opencontainers/runc/releases/download/v1.1.8/runc.amd64 
-install -m 755 runc.amd64 /usr/local/sbin/run
+sudo wget https://github.com/opencontainers/runc/releases/download/v1.1.8/runc.amd64 
+sudo install -m 755 runc.amd64 /usr/local/sbin/run
 ```
    -	Install CNI:
 ```
-wget https://github.com/containernetworking/plugins/releases/download/v1.3.0/cni-plugins-linux-amd64-v1.3.0.tgz 
-mkdir -p /opt/cni/bin
-tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.1.1.tgz
+sudo wget https://github.com/containernetworking/plugins/releases/download/v1.3.0/cni-plugins-linux-amd64-v1.3.0.tgz 
+sudo mkdir -p /opt/cni/bin
+sudo tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.3.0.tgz
 ```
 When we install docker, the docker CLI and docker daemon come in a package, so docker use to install both CLI and daemon. But here we need to install separately a CLI which can interact with containerd.
 
@@ -108,10 +108,10 @@ Install CRICTL as CLI to interact with containerd. Now CIRCTL will interact with
    -	Install CRICTL:
 ```
 VERSION="v1.26.0" # check latest version in /releases page
-wget https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-VERSION-linux-amd64.tar.gz
+sudo wget https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-VERSION-linux-amd64.tar.gz
 sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
-rm -f crictl-$VERSION-linux-amd64.tar.gz
-```
+sudo rm -f crictl-$VERSION-linux-amd64.tar.gz
+``` 
 CRICTL is a universal tool to interact with containerd, not specific for containerd. So after installation, we need to attach the CRICTL with the UNIX socket of the containerd. Else CRICTL won’t interact with containerd. 
 
 How to add CRICTL with the UNIX socket of containerd is available in the document of CRI. [CRICTL-Configuration](https://github.com/kubernetes-sigs/cri-tools/blob/master/docs/crictl.md) 
