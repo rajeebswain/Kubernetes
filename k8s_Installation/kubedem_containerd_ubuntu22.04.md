@@ -108,7 +108,7 @@ Install CRICTL as CLI to interact with containerd. Now CIRCTL will interact with
    -	Install CRICTL:
 ```
 VERSION="v1.26.0" # check latest version in /releases page
-sudo wget https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-VERSION-linux-amd64.tar.gz
+wget https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-$VERSION-linux-amd64.tar.gz
 sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
 sudo rm -f crictl-$VERSION-linux-amd64.tar.gz
 ``` 
