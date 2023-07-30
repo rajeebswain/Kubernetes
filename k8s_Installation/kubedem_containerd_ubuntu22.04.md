@@ -124,9 +124,8 @@ How to add CRICTL with the UNIX socket of containerd is available in the documen
 - unix:///var/run/cri-dockerd.sock
 ---
 ```
-Now create a file name as /etc/crictl.yaml
+Now create a file name as /etc/crictl.yaml, and add the UNIX socket ad save the file. 
 vi /etc/crictl.yaml
-cat /etc/crictl.yaml
 runtime-endpoint: unix:///run/containerd/containerd.sock
 image-endpoint: unix:///run/containerd/containerd.sock
 timeout: 2
