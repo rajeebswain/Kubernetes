@@ -150,7 +150,7 @@ Make debug=false, else it will generate a lot of debug file.
 Here enable Network Forwarding. [Port-Forwarding](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)           
             
 - Forwarding IPv4 and letting iptables see bridged traffic 
-      
+   
       cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
       overlay
       br_netfilter
@@ -167,7 +167,7 @@ Here enable Network Forwarding. [Port-Forwarding](https://kubernetes.io/docs/set
       EOF
 
       # Apply sysctl params without reboot
-      sudo sysctl –system
+      sudo sysctl –-system
       sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
       modprobe br_netfilter
       sysctl -p /etc/sysctl.conf
