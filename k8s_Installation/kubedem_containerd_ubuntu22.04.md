@@ -85,7 +85,7 @@ tar Cxzvf /usr/local containerd-1.7.3-linux-amd64.tar.gz
 In Kubernetes, a "system" generally refers to the collection of components and processes that work together to manage and maintain the overall health and operation of the Kubernetes cluster itself.
 ```
 wget https://raw.githubusercontent.com/containerd/containerd/main/containerd.service 
-mkdir /usr/local/lib/systemd/system/
+mkdir -p /usr/local/lib/systemd/system/
 mv containerd.service  /usr/local/lib/systemd/system/containerd.service
 systemctl daemon-reload
 systemctl enable --now containerd
