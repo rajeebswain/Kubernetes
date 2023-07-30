@@ -176,10 +176,9 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
-apt update -y
-apt install -y kubelet kubeadm kubectl
+sudo apt update -y
+sudo apt install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
-sudo apt-mark hold kubelet kubeadm Kubectl
 ```
 8.	Run the below commands on the master Node Only:
 ```
