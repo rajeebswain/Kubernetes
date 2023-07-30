@@ -1,4 +1,4 @@
-## Kubernetes v1.26 Cluster Setup with Kubeadm and Containerd on AWS Ubuntu 22.04
+## Kubernetes v1.26 Cluster Setup with Kubeadm and Containerd on AWS Ubuntu
 #### Kubernetes Cluster Setup:
 ---
 1.	To run containers in Pods, Kubernetes uses a container runtime.
