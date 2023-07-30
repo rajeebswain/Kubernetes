@@ -195,7 +195,13 @@ sudo kubeadm init
 e.g., sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 ```
 - The pod network CIDR you set during kubeadm init must match the CIDR range supported by the chosen CNI plugin. If the CIDR ranges are not compatible, the networking might not work as expected.
-9. Install the CNI (Container Network Interface) on master Node Only:
+9. To start using your cluster, you need to run the following as a regular user:
+```
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+10. Install the CNI (Container Network Interface) on master Node Only:
 ```
 sudo kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml 
 ```
