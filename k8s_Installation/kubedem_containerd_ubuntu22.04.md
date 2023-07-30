@@ -182,8 +182,8 @@ sudo apt-mark hold kubelet kubeadm kubectl
 ```
 8.	Run the below commands on the master Node Only:
 ```
-kubeadm config images pull
-kubeadm init
+sudo kubeadm config images pull
+sudo kubeadm init
 ```
 - This will pull the kubeadm component such as apiserver, etcd, etc. 
 - Kubeadm init will initialize the cluster. 
@@ -195,12 +195,12 @@ e.g., sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 - The pod network CIDR you set during kubeadm init must match the CIDR range supported by the chosen CNI plugin. If the CIDR ranges are not compatible, the networking might not work as expected.
 9. Install the CNI (Container Network Interface) on master Node Only:
 ```
-kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml 
+sudo kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml 
 ```
 CNI plugins are crucial components in Kubernetes that provide the networking infrastructure necessary for pods and containers to communicate with each other and the outside world. They ensure proper network connectivity, isolation, and security, enabling the smooth functioning of distributed applications within a Kubernetes cluster.
 Once the installation is completed, generate the joining token from the master node and execute the token in slave nodes. 
 ```
-kubeadm token create --print-join-command
+sudo kubeadm token create --print-join-command
 ```
 
 - When we have only one network internally, the Kubernetes control plane automatically initializes to the available network.
