@@ -67,6 +67,7 @@ Exec bash
 ```
 sudo su
 ```
+## Run all command from Sl. No. 4 to 6 in both master and slave nodes.
 4.	Disable SWAP
 ```
 swapoff -a
@@ -182,7 +183,7 @@ apt update -y
 apt install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
-8.	Run the below commands on the master Node Only:
+# Run the below commands on the master Node Only:
 ```
 kubeadm config images pull
 kubeadm init
@@ -191,17 +192,15 @@ kubeadm init
 - Kubeadm init will initialize the cluster. 
 - If more than one master node is available then use the network flag with kubeadm init, because when kubeadm initializes it tries to find out the network cidr, so if more than one master node is available, it will conflict and generate an error.
 - So it is mandatory to specify during initialization which cidr kubedadm will consider. 
-```
-e.g., sudo kubeadm init --pod-network-cidr=192.168.0.0/16
-```
+- e.g., sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 - The pod network CIDR you set during kubeadm init must match the CIDR range supported by the chosen CNI plugin. If the CIDR ranges are not compatible, the networking might not work as expected.
-9. To start using your cluster, you need to run the following as a regular user: (Only On Master)
+8. To start using your cluster, you need to run the following as a regular user: (Only On Master)
 ```
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
-10. Install the CNI (Container Network Interface) on master Node Only:
+9. Install the CNI (Container Network Interface) on master Node Only:
 ```
 kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 ```
